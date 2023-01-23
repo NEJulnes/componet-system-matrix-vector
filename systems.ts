@@ -13,7 +13,7 @@ class SystemMatrix {
     }
 
     public static Transpose(cm: ComponentMatrix): ComponentMatrix {
-        return this.Columns(cm);// return new Matrix(this.Columns.rows)
+        return this.Columns(cm);
     }
 
     public static Determinant(cm: ComponentMatrix): number {
