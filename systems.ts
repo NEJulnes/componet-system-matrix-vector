@@ -61,7 +61,17 @@ class SystemMatrix {
             console.log(msg);
             throw new Error(msg);
         }
-        return new ComponentMatrix(cm.rows.map(row => this.Columns(other).rows.map(column => (row.map((element, i) => element * column[i])).reduce((accumulator, value) => accumulator + value, 0))));
+        let out = Array<number[]>(cm.rows.length);
+        for (let i = 0; i < cm.rows[0].length; i++) {
+            out[i] = Array<number>(cm.rows[i].length);
+            for (let j = 0; j < cm.rows[0].length; j++) {
+                out[i][j] = 0;
+                for (let k = 0; k < cm.rows[0].length; k++) {
+                    out[i][j] += (cm.rows[i][k] * other.rows[k][j]);
+                }
+            }
+        }
+        return new ComponentMatrix(out);
     }
 
     public static Minor(cm: ComponentMatrix, i: number, j: number): number {
