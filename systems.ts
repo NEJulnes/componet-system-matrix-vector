@@ -62,12 +62,12 @@ class SystemMatrix {
             throw new Error(msg);
         }
         let out = Array<number[]>(cm.rows.length);
-        for (let i = 0; i < cm.rows[0].length; i++) {
-            out[i] = Array<number>(cm.rows[i].length);
-            for (let j = 0; j < cm.rows[0].length; j++) {
-                out[i][j] = 0;
-                for (let k = 0; k < cm.rows[0].length; k++) {
-                    out[i][j] += (cm.rows[i][k] * other.rows[k][j]);
+        for (let row = 0; row < cm.rows[0].length; row++) {
+            out[row] = Array<number>(cm.rows[row].length);
+            for (let column = 0; column < cm.rows[0].length; column++) {
+                out[row][column] = 0;
+                for (let multi = 0; multi < cm.rows[0].length; multi++) {
+                    out[row][column] += (cm.rows[row][multi] * other.rows[multi][column]);
                 }
             }
         }
