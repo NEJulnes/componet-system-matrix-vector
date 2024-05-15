@@ -1,3 +1,5 @@
+import { ComponentMatrix, ComponentVector } from './components';
+
 class SystemMatrix {
 
     public static Columns(cm: ComponentMatrix): ComponentMatrix {
@@ -172,3 +174,5 @@ class SystemVector {
         return new ComponentVector(multiplied[0].map((_, i) => (multiplied.map(column => column[i]).reduce((accumulator, value) => accumulator + value))));
     }
 }
+
+export { SystemMatrix, SystemVector };
